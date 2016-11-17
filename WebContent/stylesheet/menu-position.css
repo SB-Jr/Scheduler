@@ -1,0 +1,6 @@
+div.menu {
+    position: fixed;
+    top: 0;
+    right: 50%;
+    margin: 30px
+}

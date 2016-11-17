@@ -1,0 +1,4 @@
+#0288D1        -- dark primary colour
+#03A9F4        -- primary colour
+#B3E5FC        -- light primary colour
+#FFFFFF        -- text (white)

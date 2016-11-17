@@ -1,0 +1,12 @@
+div.login {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 30px
+}
+
+div.welcome {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+}
