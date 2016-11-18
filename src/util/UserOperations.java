@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import bean.LoginBean;
 
-public class ValidateUser {
+public class UserOperations {
 
 	private final static String driverName = "com.mysql.jdbc.Driver";
 	private final static String username="root";
@@ -30,9 +30,6 @@ public class ValidateUser {
 			ResultSet rs = st.executeQuery();
 			rs.first();
 			
-			System.out.println("bean:"+bean.getUsername()+" "+bean.getPassword());
-			//System.out.println("sql: "+rs.getString(0)+" "+rs.getString(1));
-			
 			if(rs.getString(1).equalsIgnoreCase(bean.getUsername())){
 				result = true;
 			}else{
@@ -50,9 +47,12 @@ public class ValidateUser {
 		catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			return result;
 		}
 		
-		return true;
 	}
 	
 	public static boolean register(LoginBean bean){
@@ -63,9 +63,9 @@ public class ValidateUser {
 		try {
 			Class.forName(driverName);
 			con = DriverManager.getConnection(url,username,password);
-			PreparedStatement st = con.prepareStatement("insert into users values(userid=? and password=?)");
-			st.setString(0, bean.getUsername());
-			st.setString(1, bean.getPassword());
+			PreparedStatement st = con.prepareStatement("insert into users values(?,?)");
+			st.setString(1, bean.getUsername());
+			st.setString(2, bean.getPassword());
 			
 			int rs= st.executeUpdate();
 			

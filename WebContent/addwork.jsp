@@ -30,7 +30,7 @@
 	<div class="container">
     <div class="login">
       <h1>Add Work to your Scheduler</h1>
-      <form method="post" action="loginvalidate.jsp">
+      <form method="post" action="addworkprocess.jsp">
         <p><input type="text" name="workname" placeholder="Workname"></p>
         <p><label>Type:</label><Select name="type" class="select">
         	<option value="pending">Pending</option>
@@ -38,6 +38,7 @@
         	<option value="deploy">Deploy</option>
         	<option value="done">Done</option>
         </Select></p>
+        <label  style="visibility: hidden;"></label>
         <p class="submit"><input type="submit" name="commit" value="Add Work"></p>
       </form>
     </div>
