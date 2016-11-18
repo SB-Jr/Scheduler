@@ -41,11 +41,15 @@
 		<sql:query dataSource="${snapshot}" var="result">
    			select * from work where userid="<%=user %>" and workstatus="pending";
 		</sql:query>
+		<form action="modifywork.jsp" method="post">
 		<select name="pending" size="10">
 			<c:forEach var="row" items="${result.rows}">
 				<option><c:out value="${row.workname}"/></option>
 			</c:forEach>
 		</select>
+		<br>
+		<center><input type="submit" value="move to testing>>>"></center> 
+		</form>
 		</p>		
 	</div>
 	
@@ -54,11 +58,15 @@
 		<sql:query dataSource="${snapshot}" var="result">
    			select * from work where userid="<%=user %>"  and workstatus="testing";
 		</sql:query>
+		<form action="modifywork.jsp" method="post">
 		<select name="testing" size="10">
 			<c:forEach var="row" items="${result.rows}">
 				<option><c:out value="${row.workname}"/></option>
 			</c:forEach>
-		</select>		
+		</select>
+		<br>
+		<center><input type="submit" value="move to Deploy>>>"></center> 
+		</form>		
 		</p>
 	</div>
 	
@@ -67,11 +75,15 @@
 		<sql:query dataSource="${snapshot}" var="result">
    			select * from work where userid="<%=user %>"  and workstatus="deploy";
 		</sql:query>
+		<form action="modifywork.jsp" method="post">
 		<select name="deploy" size="10">
 			<c:forEach var="row" items="${result.rows}">
 				<option><c:out value="${row.workname}"/></option>
 			</c:forEach>
 		</select>
+		<br>
+		<center><input type="submit" value="move to Done>>>"></center> 
+		</form>
 		</p>		
 	</div>
 	

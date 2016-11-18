@@ -41,4 +41,36 @@ public class WorkOperations {
 		}
 	}
 
+	
+	public static void upgradeWork(String user,String work,String type){
+		Connection con;
+		try {
+			Class.forName(driverName);
+			con = DriverManager.getConnection(url,username,password);
+			
+			PreparedStatement st = con.prepareStatement("update work set workstatus=? where userid=? and workname=?");
+			
+			if(type.equalsIgnoreCase("pending")){
+				st.setString(1, "testing");
+			}
+			else if(type.equalsIgnoreCase("testing")){
+				st.setString(1, "deploy");
+			}
+			else{
+				st.setString(1, "done");
+			}
+			st.setString(2, user);
+			st.setString(3, work);
+			st.executeUpdate();
+			
+			st.close();
+			con.close();
+		} 
+		catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+		}
+	}
 }
